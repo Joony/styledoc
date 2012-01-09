@@ -1,16 +1,16 @@
 var cssdoc = {
 
-  load: function (filename) {
+  load: function (filename, container) {
 	  var client = new XMLHttpRequest();
 	  client.open('GET', filename);
 	  client.onreadystatechange = function() {
 	    if (client.readyState == 4) {
-	      generate_styleguide(cssdoc_parser.parse(client.responseText));
+	      generate_styleguide(cssdoc_parser.parse(client.responseText), container);
 	    }
 	  }
 	  client.send();
 
-    function generate_styleguide (result) {
+    function generate_styleguide (result, container) {
 		  console.log(result);
 		  for (var i = 0; i < result.length; i++) {
 		    var shortDescription = result[i].shortDescription;
@@ -21,25 +21,25 @@ var cssdoc = {
 		    var markup = lookupTag(result[i].tags, 'markup');
 		    var styles = result[i].styles;
 
-		    document.write('<div class="element">');
+		    container.innerHTML += '<div class="element">';
 		    // SECTION
 		    if (section != null) {
-		      document.write(section.value + ' - ' + section.description + '<br />');
+		      container.innerHTML += section.value + ' - ' + section.description + '<br />';
 		    }
 
 		    // SHORT DESCRIPTION
 		    if (shortDescription != null) {
-		      document.write('<h3>' + shortDescription + '</h3>');
+		      container.innerHTML += '<h3>' + shortDescription + '</h3>';
 		    }
 		    // DESCRIPTION
-		    document.write('<p class="description">' + description + '</p>');
+		    container.innerHTML += '<p class="description">' + description + '</p>';
     
 		    // MARKUP
 		    if (markup != null) {	
-		      document.write('<div id="markupcontainer-' + i + '-default">');
-		      document.write(markup.value);
-		      document.write('</div><br />');
-		      var element = document.getElementById('markupcontainer-' + i + '-default').lastChild;
+		      container.innerHTML += '<div id="markupcontainer-' + i + '-default"></div><br />';
+		      var elementContainer = document.getElementById('markupcontainer-' + i + '-default');
+		      elementContainer.innerHTML = markup.value;
+		      var element = elementContainer.lastChild;
 		      element.setAttribute('style', styles[0].ruleset);
 
 		      // PSEUDOS
@@ -47,11 +47,11 @@ var cssdoc = {
 		        for (var j = 0; j < pseudos.length; j++) {
 		          var style = lookupStyle(styles, pseudos[j].value);
 		          if (style != null) {
-		            document.write('<p><code>' + pseudos[j].value + '</code> - ' + pseudos[j].description + '</p>');
-		            document.write('<div id="markupcontainer-' + i + '-' + pseudos[j].value.replace(':', '') + '">');
-		            document.write(markup.value);
-		            document.write('</div><br />');
-		            var element = document.getElementById('markupcontainer-' + i + '-' + pseudos[j].value.replace(':', '')).lastChild;
+		            container.innerHTML += '<p><code>' + pseudos[j].value + '</code> - ' + pseudos[j].description + '</p>';
+		            container.innerHTML += '<div id="markupcontainer-' + i + '-' + pseudos[j].value.replace(':', '') + '"></div><br />';
+								var elementContainer = document.getElementById('markupcontainer-' + i + '-' + pseudos[j].value.replace(':', ''));
+		            elementContainer.innerHTML = markup.value;
+		            var element = elementContainer.lastChild;
 		            element.setAttribute('style', styles[0].ruleset + '; ' + style.ruleset);
 		          }
 		        }
@@ -62,11 +62,11 @@ var cssdoc = {
 		        for (var j = 0; j < modifiers.length; j++) {
 		          var style = lookupStyle(styles, modifiers[j].value);
 		          if (style != null) {
-		            document.write('<p><code>' + modifiers[j].value + '</code> - ' + modifiers[j].description + '</p>');
-		            document.write('<div id="markupcontainer-' + i + '-' + modifiers[j].value.replace('.', '') + '">');
-		            document.write(markup.value);
-		            document.write('</div><br />');
-		            var element = document.getElementById('markupcontainer-' + i + '-' + modifiers[j].value.replace('.', '')).lastChild;
+		            container.innerHTML += '<p><code>' + modifiers[j].value + '</code> - ' + modifiers[j].description + '</p>';
+		            container.innerHTML += '<div id="markupcontainer-' + i + '-' + modifiers[j].value.replace('.', '') + '"></div><br />';
+								var elementContainer = document.getElementById('markupcontainer-' + i + '-' + modifiers[j].value.replace('.', ''));
+		            elementContainer.innerHTML += markup.value;
+		            var element = elementContainer.lastChild;
 		            element.setAttribute('style', styles[0].ruleset + '; ' + style.ruleset);
 		          }
 		        }
@@ -75,9 +75,9 @@ var cssdoc = {
 		    }
 
 		    // MARKUP
-				document.write('<code>' + markup.value.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</code>');
+				container.innerHTML += '<code>' + markup.value.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</code>';
 		
-		    document.write('</div><hr />');
+		    container.innerHTML += '</div><hr />';
 		  }
 		}
 
