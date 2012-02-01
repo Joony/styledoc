@@ -1,11 +1,11 @@
-var cssdoc = {
+var styledoc = {
 
   load: function (filename, container) {
 	  var client = new XMLHttpRequest();
 	  client.open('GET', filename);
 	  client.onreadystatechange = function() {
 	    if (client.readyState == 4) {
-	      generate_styleguide(cssdoc_parser.parse(client.responseText), container);
+	      generate_styleguide(styledoc_parser.parse(client.responseText), container);
 	    }
 	  }
 	  client.send();
