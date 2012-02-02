@@ -1,0 +1,171 @@
+@charset "utf-8";
+/**
+ * Styledoc navigation.
+ *
+ * @section      1.0             Navigation
+ * @author                       ldeleuran
+ * @version                      1.0
+ * @since                        1.0
+ * @markup                       <div class="styledoc-navigation"><a href="#">Section link</a><a href="#">Section link</a></div>
+*/
+.styledoc-navigation {
+  font-size:16px;
+  font-family:Georgia, Times, "Times New Roman", serif;
+  float:left;
+  width:18%;
+  position:fixed;
+  padding:0;
+  margin:0 1%;
+}
+.styledoc-navigation a {
+  border:none;
+  display:block;
+  line-height:1.4em;
+  padding:0.25em 0;
+  text-decoration:none;
+  color:#005155;
+  border-bottom:1px solid transparent;
+    -o-transition:all 0.2s ease-out;
+    -ms-transition:all 0.2s ease-out;
+    -moz-transition:all 0.2s ease-out;
+    -webkit-transition:all 0.2s ease-out;
+  transition:all 0.2s ease-out;
+}
+.styledoc-navigation a:hover {
+  border-color:#005155
+}
+.styledoc-navigation a:active {
+  border-color:#052229;
+  color:#052229;
+}
+.styledoc-navigation a.active {
+  color:#88912d;
+}
+.styledoc-navigation a.active:hover {
+  border-color:#88912d;
+}
+
+/**
+ * Styledoc header
+ *
+ * @section      1.0             Header
+ * @author                       ldeleuran
+ * @version                      1.0
+ * @since                        1.0
+ * @markup                       <h1 class="styledoc-header">Title</h1>
+*/
+.styledoc-header {
+  font-size:32px;
+  font-family:Georgia, Times, "Times New Roman", serif;
+  padding:0;
+  margin:0 1%;
+  line-height:64px;
+  float:right;
+  width:76%;
+  border-bottom:1px solid #ddd;
+  font-weight:normal;
+}
+
+/**
+ * Styledoc content container.
+ *
+ * @section      1.0             Content container
+ * @author                       ldeleuran
+ * @version                      1.0
+ * @since                        1.0
+ * @markup                       <div class="styledoc-content"></div>
+*/
+.styledoc-content {
+  float:right;
+  width:76%;
+  padding:0;
+  margin:0 1%;
+}
+
+/**
+ * Styledoc module.
+ *
+ * @section      1.0             Module container
+ * @author                       ldeleuran
+ * @version                      1.0
+ * @since                        1.0
+ * @markup                       <div class="styledoc-module"><h6 class="styledoc-section"><span class="styledoc-section-value">2.1.3</span> <span class="styledoc-section-description">Form Buttons</span></h6><h3 class="styledoc-short-description">Short description.</h3><p class="styledoc-description">Long description.</p></div>
+*/
+.styledoc-module {
+  border-bottom:1px solid #ddd;
+  padding:24px 0;
+  margin:0 0 24px;
+}
+.styledoc-module .styledoc-section {
+  font-size:24px;
+  line-height:32px;
+  font-family:Georgia, Times, "Times New Roman", serif;
+  margin:0 0 12px;
+  padding:0;
+  font-weight:normal;
+}
+.styledoc-module .styledoc-short-description {
+  font-size:16px;
+  line-height:24px;
+  font-family:Georgia, Times, "Times New Roman", serif;
+  margin:0;
+  padding:0;
+  font-weight:normal;
+  font-style:italic;
+}
+.styledoc-module .styledoc-long-description {
+  font-size:16px;
+  line-height:24px;
+  font-family:Georgia, Times, "Times New Roman", serif;
+  margin:0;
+  padding:0;
+  font-weight:normal;
+}
+
+/**
+ * Styledoc example container.
+ *
+ * @section      1.0             Example container
+ * @author                       ldeleuran
+ * @version                      1.0
+ * @since                        1.0
+ * @markup                       <div class="styledoc-example"><code class="styledoc-modifier">:modifier</code><span class="styledoc-description">Description.</span><div class="styledoc-markup">Example markup</div></div>
+*/
+.styledoc-example {
+  margin:24px 0;
+  padding:24px;
+  border:1px solid #ddd;
+    -o-transition:all 0.2s ease-out;
+    -ms-transition:all 0.2s ease-out;
+    -moz-transition:all 0.2s ease-out;
+    -webkit-transition:all 0.2s ease-out;
+  transition:all 0.2s ease-out;
+}
+.styledoc-example:hover {
+  background:#f9f9f9;
+}
+.styledoc-example .styledoc-modifier {
+  display:block;
+  font-size:18px;
+  line-height:24px;
+  font-family:"Courier New", Courier, monospace;
+  padding:0;
+  margin:0;
+}
+.styledoc-example .styledoc-markup-description {
+  display:block;
+  font-size:16px;
+  line-height:24px;
+  font-family:Georgia, Times, "Times New Roman", serif;
+  padding:0;
+  margin:0;
+}
+.styledoc-example .styledoc-markup {
+  padding:0;
+  margin:24px 0 0;
+  max-width:100%;
+  overflow:auto;
+}
+.styledoc-example .styledoc-markup:first-child {
+  margin:0;
+}
