@@ -73,13 +73,17 @@
     // Set up instance settings
     var t = this;
     this.title = lang[3];
-    this.header = $('<h1 class="styledoc-header" id="styledoc-header" name="styledoc-header" />');
+    this.header = $('<h1 class="styledoc-header" />');
     this.content = $('<div class="styledoc-content" />');
-    this.navigation = $('<div class="styledoc-navigation"><a href="#styledoc-header">Home</a></div>')
-      .delegate('a','click', function(e){
+    this.navigation = $('<div class="styledoc-navigation"></div>');
+    
+    // Add home navigation
+    $('<a href="#styledoc-header">Home</a>')
+      .click(function(e){
         e.preventDefault();
-        t.navigateTo(t.content.parent().find(e.target.hash));
-      });
+        t.navigateTo(t.header);
+      })
+      .prependTo(this.navigation);
     
     // Merge settings (if any)
     if (typeof settings === 'object') $.extend(this,settings);
@@ -130,7 +134,12 @@
       this.content.append($module);
       
       // Add to navigation
-      $('<a href="#' + slug + '">' + sectionName + '</a>').appendTo(this.navigation);
+      $('<a href="#' + slug + '">' + sectionName + '</a>')
+        .click(function(e){
+          e.preventDefault();
+          t.navigateTo(t.content.parent().find(e.target.hash));
+        })
+        .appendTo(this.navigation);
     }
     
     // Insert to the DOM
