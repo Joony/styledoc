@@ -6,7 +6,7 @@ Now that's brown sugar for your Irish coffee right there.
 
 Build by [@joony](http://twitter.com/joony) and [@laustdeleuran](http://twitter.com/laustdeleuran) at [@verticny](http://twitter.com/verticny).
 
-## To-do / known issue / wish list
+## To-do / known issues / wish list
 
 * Think up clever way to do sections and subsections, parse them accordingly and output them on "pages"
 * Test with more demanding modules, especially with nested markup
