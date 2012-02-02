@@ -81,6 +81,7 @@
     $('<a href="#styledoc-header">Home</a>')
       .click(function(e){
         e.preventDefault();
+        $(this).addClass('active').siblings().removeClass('active');
         t.navigateTo(t.header);
       })
       .prependTo(this.navigation);
@@ -137,6 +138,7 @@
       $('<a href="#' + slug + '">' + sectionName + '</a>')
         .click(function(e){
           e.preventDefault();
+          $(this).addClass('active').siblings().removeClass('active');
           t.navigateTo(t.content.parent().find(e.target.hash));
         })
         .appendTo(this.navigation);
@@ -147,7 +149,9 @@
   };
   _Styledoc.prototype.navigateTo = function($target){
     if ($target[0]) {
-      $(document.body).animate({scrollTop:$target.offset().top},500);
+      $('html,body').animate({scrollTop:$target.offset().top},500);
+      $target.closest('.styledoc').find('.styledoc-module,.styledoc-header').removeClass('active');
+      $target.addClass('active');
     }
   };
   

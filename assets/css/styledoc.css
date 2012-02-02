@@ -95,6 +95,24 @@
   border-bottom:1px solid #ddd;
   padding:24px 0;
   margin:0 0 24px;
+  position:relative;
+}
+.styledoc-module:before {
+  display:none;
+  opacity:0;
+  padding:0 20px 0 0;
+  content:"→";
+  position:absolute;
+  right:100%;
+  font-size:24px;
+  line-height:32px;
+  font-family:Georgia, Times, "Times New Roman", serif;
+
+}
+.styledoc-module.active:before {
+  display:block;
+  opacity:1;
+  padding:0 10px 0 0;
 }
 .styledoc-module .styledoc-section {
   font-size:24px;
