@@ -156,7 +156,6 @@
     -moz-transition:all 0.2s ease-out;
     -webkit-transition:all 0.2s ease-out;
   transition:all 0.2s ease-out;
-  overflow:hidden;
 }
 .styledoc-example:hover {
   background:#f9f9f9;
